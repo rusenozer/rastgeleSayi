@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div>
+        <label for="min">Minimum Değer</label>
+        <input type="range" id="min" min="0" max="50">
+        <button class="btn">Seç</button>
+        <input type="text" id="min_val" disabled>
+   </div>
+  
+   <div>
+        <label for="max">Maksimum değer</label>
+        <input type="range" id="max" min="51" max="100">
+        <button class="btn" >Seç</button>
+        <input type="text" id="max_val" disabled>
+   </div>
+   
+  
+    <div>
+        <button onclick="uret()">Üret</button>
+    </div>
+    <hr>
+    <p id="sayi">Rastgele Sayı:</p>
+</body>
+
+<script>
+const inputs = document.querySelectorAll('input[type="range"]')
+const textAreas = document.querySelectorAll('input[type="text')
+const buttons = document.querySelectorAll(".btn");
+const result_text = document.getElementById('sayi');
+const min_val = document.getElementById('min_val');
+const max_val = document.getElementById('max_val');
+
+
+
+buttons.forEach((button,index)=>{
+    button.addEventListener('click',function(){
+       
+        textAreas[index].value = inputs[index].value;
+
+    })
+})
+
+function uret(){
+    
+    if(min_val.value && max_val.value){
+        const min = Number(min_val.value);
+        const max= Number(max_val.value);
+       result_text.innerHTML = "Rastgele Sayı:" + Math.round(Math.random()*(max-min)+min);
+    }else{
+        alert("Lütfen 2 sayı belirleyiniz");
+    }
+}
+    
+</script>
+</html>
